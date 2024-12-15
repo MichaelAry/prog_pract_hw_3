@@ -47,11 +47,12 @@ float line_calc(float a, float b, float x, double euler_const, unsigned int e){
     float res{1};
     float p{1};
     for (int i=1; i<=e; i++){
-        for(int j=0; j<e; j++){
-            if(j>=1){
-                p*=(a+j)*(b+j)/(euler_const+j);}
+        for(int j=0;j<i;j++){
+            if (j>0){
+                p*=(a+j)*(b+j)/(euler_const+j);
+            }
         }
-        
-    }
+        res+=(a*b*pow(x,i))/(fact_calc(i)*(euler_const))*p;
+    }    
     return res;
 }
